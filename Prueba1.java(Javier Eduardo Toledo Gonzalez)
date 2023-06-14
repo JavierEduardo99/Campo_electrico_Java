@@ -1,0 +1,76 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
+
+package com.mycompany.prueba1;
+
+import java.util.Scanner;
+
+public class Prueba1{
+    
+    // Función para calcular el campo eléctrico
+    public static double calcularCampoElectrico(double carga, double distancia, double constante) {
+        return (constante * carga) / (distancia * distancia);
+    }
+
+    public static void main(String[] args) {
+        // Carga en Coulombs
+        double carga;
+
+        // Distancia en metros
+        double distancia;
+
+        // Selección de la constante adecuada según el medio
+        double constante = 9e9; // Constante de permitividad del vacío
+
+        // Pedir al usuario que seleccione el medio
+        int medio;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Hola con este progama te ayudare a calcular el campo electrico,");
+        System.out.println("por favor ingresa los datos que se te piden acontinuacion.");
+        System.out.println("Seleccione el medio:");
+        System.out.println("1. Mili");
+        System.out.println("2. Micro");
+        System.out.println("3. Nano");
+        
+        System.out.println("-------------------------------------------------------------------");
+        System.out.println("Mili= 10^-3 "+" Micro= 10^-6"+ " Nano= 10^-9");
+        medio = scanner.nextInt();
+        
+                
+
+        switch (medio) {
+            case 1:
+                constante = 9e3; // Constante de permitividad del Mili (1e-3 * 9e9)
+                break;
+            case 2:
+                constante = 9e6; // Constante de permitividad del micro (1e-6 * 9e9)
+                break;
+            case 3:
+                constante = 9e9; // Constante de permitividad del nano (1e-9 * 9e9)
+                break;
+        }
+
+        // Lectura de la carga y la distancia
+        System.out.print("Ingrese el valor de la carga en Coulombs: ");
+        carga = scanner.nextDouble();
+
+        System.out.print("Ingrese la distancia en metros: ");
+        distancia = scanner.nextDouble();
+
+        // Cálculo del campo eléctrico
+        double campoElectrico = calcularCampoElectrico(carga, distancia, constante);
+
+        // Mostrar el resultado
+        System.out.println("\nRESULTADO:");
+        System.out.println("----------------------------");
+        System.out.println("Carga: " + carga + " C");
+        System.out.println("Distancia: " + distancia + " m");
+        System.out.println("Campo eléctrico: " + campoElectrico + " N/C");
+        System.out.println("----------------------------");
+
+        scanner.close();
+    }
+}
+
+
